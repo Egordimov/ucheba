@@ -1,0 +1,85 @@
+using System;
+
+class Calc
+{
+    public double Add(double a, double b)
+    {
+        return a + b;
+    }
+
+    public double Subtract(double a, double b)
+    {
+        return a - b;
+    }
+
+    public double Multiply(double a, double b)
+    {
+        return a * b;
+    }
+
+    public double Divide(double a, double b)
+    {
+        if (b == 0)
+        {
+            Console.WriteLine("Error: Division by zero");
+            return 0;
+        }
+        return a / b;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Calc calculator = new Calc();
+        double result;
+        double a, b;
+        int choice;
+
+         do
+        {
+            Console.WriteLine("Enter the first number:");
+            a = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the second number:");
+            b = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Choose an operation:");
+            Console.WriteLine("1. Add");
+            Console.WriteLine("2. Subtract");
+            Console.WriteLine("3. Multiply");
+            Console.WriteLine("4. Divide");
+            Console.WriteLine("0. Exit");
+
+            choice = int.Parse(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    result = calculator.Add(a, b);
+                    Console.WriteLine($"Result: {result}");
+                    break;
+                case 2:
+                    result = calculator.Subtract(a, b);
+                    Console.WriteLine($"Result: {result}");
+                    break;
+                case 3:
+                    result = calculator.Multiply(a, b);
+                    Console.WriteLine($"Result: {result}");
+                    break;
+                case 4:
+                    result = calculator.Divide(a, b);
+                    Console.WriteLine($"Result: {result}");
+                    break;
+                case 0:
+                    Console.WriteLine("Exiting program :c");
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice, try again");
+                    break;  
+            }
+
+        } while (choice != 0);
+    }
+}
